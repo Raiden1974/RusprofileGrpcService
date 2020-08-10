@@ -1,0 +1,108 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "RusprofileGrpc.proto",
+    "version": "1.0"
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/inn": {
+      "post": {
+        "summary": "rpc FirmInfoGet(FirmByINNRequest) returns (FirmInfoResponse) {}",
+        "operationId": "RusprofileParserService_FirmInfoGet",
+        "responses": {
+          "200": {
+            "description": "A successful response.",
+            "schema": {
+              "$ref": "#/definitions/rusprofileparserserviceFirmInfoResponse"
+            }
+          },
+          "default": {
+            "description": "An unexpected error response",
+            "schema": {
+              "$ref": "#/definitions/runtimeError"
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/rusprofileparserserviceFirmByINNRequest"
+            }
+          }
+        ],
+        "tags": [
+          "RusprofileParserService"
+        ]
+      }
+    }
+  },
+  "definitions": {
+    "protobufAny": {
+      "type": "object",
+      "properties": {
+        "type_url": {
+          "type": "string"
+        },
+        "value": {
+          "type": "string",
+          "format": "byte"
+        }
+      }
+    },
+    "runtimeError": {
+      "type": "object",
+      "properties": {
+        "error": {
+          "type": "string"
+        },
+        "code": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "message": {
+          "type": "string"
+        },
+        "details": {
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/protobufAny"
+          }
+        }
+      }
+    },
+    "rusprofileparserserviceFirmByINNRequest": {
+      "type": "object",
+      "properties": {
+        "inn": {
+          "type": "string"
+        }
+      }
+    },
+    "rusprofileparserserviceFirmInfoResponse": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "kpp": {
+          "type": "string"
+        },
+        "inn": {
+          "type": "string"
+        },
+        "boss": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

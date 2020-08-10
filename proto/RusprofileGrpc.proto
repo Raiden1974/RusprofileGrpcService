@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package rusprofileparserservice;
+
+import "google/api/annotations.proto";
+
+message FirmByINNRequest {
+    string inn = 1;
+}
+
+message FirmInfoResponse {
+    string name = 1;
+    string kpp = 2;
+    string inn = 3;
+    string boss = 4;
+}
+
+service RusprofileParserService {
+    //rpc FirmInfoGet(FirmByINNRequest) returns (FirmInfoResponse) {}
+    rpc FirmInfoGet(FirmByINNRequest) returns (FirmInfoResponse) {
+        option (google.api.http) = {
+          post: "/inn"
+          body: "*"
+        };
+    }
+}
